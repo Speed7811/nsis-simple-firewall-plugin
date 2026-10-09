@@ -1,0 +1,36 @@
+﻿<Project xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+    <PropertyGroup>
+        <ProjectGuid>{1FF9DE8E-FED3-4AEB-AD55-81C382370CA4}</ProjectGuid>
+    </PropertyGroup>
+    <ItemGroup>
+        <Projects Include="SimpleFC.dproj">
+            <Dependencies/>
+        </Projects>
+    </ItemGroup>
+    <ProjectExtensions>
+        <Borland.Personality>Default.Personality.12</Borland.Personality>
+        <Borland.ProjectType/>
+        <BorlandProject>
+            <Default.Personality/>
+        </BorlandProject>
+    </ProjectExtensions>
+    <Target Name="SimpleFC">
+        <MSBuild Projects="SimpleFC.dproj"/>
+    </Target>
+    <Target Name="SimpleFC:Clean">
+        <MSBuild Projects="SimpleFC.dproj" Targets="Clean"/>
+    </Target>
+    <Target Name="SimpleFC:Make">
+        <MSBuild Projects="SimpleFC.dproj" Targets="Make"/>
+    </Target>
+    <Target Name="Build">
+        <CallTarget Targets="SimpleFC"/>
+    </Target>
+    <Target Name="Clean">
+        <CallTarget Targets="SimpleFC:Clean"/>
+    </Target>
+    <Target Name="Make">
+        <CallTarget Targets="SimpleFC:Make"/>
+    </Target>
+    <Import Project="$(BDS)\Bin\CodeGear.Group.Targets" Condition="Exists('$(BDS)\Bin\CodeGear.Group.Targets')"/>
+</Project>
